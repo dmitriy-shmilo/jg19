@@ -2,6 +2,7 @@ class_name Player
 extends KinematicBody2D
 
 signal died(sender)
+signal joined()
 
 export(float) var speed = 150
 export(float) var acceleration = 1000
@@ -50,6 +51,8 @@ func _process(delta: float) -> void:
 		var collision = get_slide_collision(i)
 		if collision.collider.is_in_group("damage"):
 			emit_signal("died", self)
+		elif collision.collider.is_in_group("player"):
+			emit_signal("joined")
 
 
 func reset() -> void:
