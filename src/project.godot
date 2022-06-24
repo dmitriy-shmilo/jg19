@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://title_screen/settings/keybinding_button.gd"
 }, {
+"base": "Node2D",
+"class": "Level",
+"language": "GDScript",
+"path": "res://game_screen/level.gd"
+}, {
 "base": "TileMap",
 "class": "MirrorTileMap",
 "language": "GDScript",
@@ -43,6 +48,11 @@ _global_script_classes=[ {
 "class": "SettingsScene",
 "language": "GDScript",
 "path": "res://title_screen/settings/settings_scene.gd"
+}, {
+"base": "Node",
+"class": "Shaker",
+"language": "GDScript",
+"path": "res://util/shaker.gd"
 }, {
 "base": "Node",
 "class": "State",
@@ -63,19 +73,75 @@ _global_script_classes=[ {
 "class": "TutorialScene",
 "language": "GDScript",
 "path": "res://title_screen/tutorial/tutorial_scene.gd"
+}, {
+"base": "Reference",
+"class": "VargenCSharpComposer",
+"language": "GDScript",
+"path": "res://addons/vargen/script_composers/vargen_csharp_composer.gd"
+}, {
+"base": "Reference",
+"class": "VargenCsharpConstants",
+"language": "GDScript",
+"path": "res://addons/vargen/script_composers/vargen_csharp_constants.gd"
+}, {
+"base": "Reference",
+"class": "VargenDock",
+"language": "GDScript",
+"path": "res://addons/vargen/vargen_dock.gd"
+}, {
+"base": "Reference",
+"class": "VargenGDScriptComposer",
+"language": "GDScript",
+"path": "res://addons/vargen/script_composers/vargen_gdscript_composer.gd"
+}, {
+"base": "Reference",
+"class": "VargenNamer",
+"language": "GDScript",
+"path": "res://addons/vargen/namers/vargen_namer.gd"
+}, {
+"base": "Reference",
+"class": "VargenPascalNamer",
+"language": "GDScript",
+"path": "res://addons/vargen/namers/vargen_pascal_namer.gd"
+}, {
+"base": "Resource",
+"class": "VargenPreferences",
+"language": "GDScript",
+"path": "res://addons/vargen/vargen_preferences.gd"
+}, {
+"base": "Reference",
+"class": "VargenScriptComposer",
+"language": "GDScript",
+"path": "res://addons/vargen/script_composers/vargen_script_composer.gd"
+}, {
+"base": "Reference",
+"class": "VargenSnakeNamer",
+"language": "GDScript",
+"path": "res://addons/vargen/namers/vargen_snake_namer.gd"
 } ]
 _global_script_class_icons={
 "CreditsScene": "",
 "Fader": "",
 "Gui": "",
 "KeyBindingButton": "",
+"Level": "",
 "MirrorTileMap": "",
 "Player": "",
 "SettingsScene": "",
+"Shaker": "",
 "State": "",
 "StateMachine": "",
 "TitleScene": "",
-"TutorialScene": ""
+"TutorialScene": "",
+"VargenCSharpComposer": "",
+"VargenCsharpConstants": "",
+"VargenDock": "",
+"VargenGDScriptComposer": "",
+"VargenNamer": "",
+"VargenPascalNamer": "",
+"VargenPreferences": "",
+"VargenScriptComposer": "",
+"VargenSnakeNamer": ""
 }
 
 [application]
@@ -97,6 +163,10 @@ window/size/width=640
 window/size/height=360
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/vargen/plugin.cfg" )
 
 [importer_defaults]
 

@@ -1,6 +1,8 @@
 class_name Player
 extends KinematicBody2D
 
+signal died(sender)
+
 export(float) var speed = 150
 export(float) var acceleration = 1000
 export(float) var jump_speed = 500
@@ -43,6 +45,17 @@ func _process(delta: float) -> void:
 		_velocity.y += gravity * delta
 
 	_velocity = move_and_slide(_velocity, Vector2.UP)
+
+	for i in get_slide_count():
+		var collision = get_slide_collision(i)
+		if collision.collider.is_in_group("damage"):
+			emit_signal("died", self)
+
+
+func reset() -> void:
+	_velocity = Vector2.ZERO
+	_can_jump = false
+	_coyote_timer.stop()
 
 
 func _on_CoyoteTimer_timeout() -> void:
