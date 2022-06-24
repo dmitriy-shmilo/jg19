@@ -24,6 +24,7 @@ func _ready() -> void:
 	gravity = 2 * jump_height / (jump_half_time * jump_half_time)
 	jump_speed = gravity * jump_half_time
 	_x_multiplier = -1.0 if is_mirror else 1.0
+	scale.x = _x_multiplier
 
 
 func _process(delta: float) -> void:

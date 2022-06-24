@@ -1,9 +1,15 @@
 class_name Level
 extends Node2D
 
+signal finished(sender)
+signal lost(sender)
+
+export(String) var level_title = ""
+export(bool) var has_darkness = true
+
+onready var _spreading_timer: Timer = $"SpreadingTimer"
 onready var _darkness_tile_map: TileMap = $"Right/DarknessTileMap"
 onready var _darkness_spawn: Position2D = $"Right/DarknessSpawn"
-onready var _screen_shaker: Shaker = $"ScreenShaker"
 onready var _right_player: KinematicBody2D = $"Right/RightPlayer"
 onready var _left_player: KinematicBody2D = $"Left/LeftPlayer"
 onready var _right_player_spawn: Position2D = $"Right/RightPlayerSpawn"
@@ -21,9 +27,12 @@ func _reset() -> void:
 	_right_player.position = _right_player_spawn.position
 	_left_player.reset()
 	_right_player.reset()
-	_darkness_tile_map.clear()
-	var dark_tile = _darkness_tile_map.world_to_map(_darkness_spawn.position)
-	_darkness_tile_map.set_cellv(dark_tile, 0)
+
+	if has_darkness:
+		_spreading_timer.start()
+		_darkness_tile_map.clear()
+		var dark_tile = _darkness_tile_map.world_to_map(_darkness_spawn.position)
+		_darkness_tile_map.set_cellv(dark_tile, 0)
 
 
 func _mirror_map() -> void:
@@ -39,8 +48,9 @@ func _mirror_map() -> void:
 
 
 func _lose() -> void:
-	_screen_shaker.shake_horizontal(self, "position", 8, 5, 0.25)
+	emit_signal("lost", self)
 	_reset()
+
 
 func _on_LeftPlayer_died(sender) -> void:
 	_lose()
@@ -54,5 +64,8 @@ func _on_SpreadingTimer_timeout() -> void:
 	_darkness_tile_map.spread_towards(_right_player.position)
 	_darkness_tile_map.spread_randomly()
 
+
 func _on_LeftPlayer_joined() -> void:
+	emit_signal("finished", self)
+	_left_player.collision_layer = 0
 	_reset()

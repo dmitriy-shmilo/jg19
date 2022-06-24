@@ -37,7 +37,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Level",
 "language": "GDScript",
-"path": "res://game_screen/level.gd"
+"path": "res://game_screen/levels/level.gd"
 }, {
 "base": "TileMap",
 "class": "MirrorTileMap",
@@ -153,7 +153,7 @@ _global_script_class_icons={
 [application]
 
 config/name="jg19"
-run/main_scene="res://game_screen/level1.tscn"
+run/main_scene="res://game_screen/game_screen.tscn"
 config/icon="res://icon.png"
 config/windows_native_icon="res://icon.ico"
 
