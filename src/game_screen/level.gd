@@ -8,10 +8,10 @@ onready var _right_player: KinematicBody2D = $"Right/RightPlayer"
 onready var _left_player: KinematicBody2D = $"Left/LeftPlayer"
 onready var _right_player_spawn: Position2D = $"Right/RightPlayerSpawn"
 onready var _left_player_spawn: Position2D = $"Left/LeftPlayerSpawn"
-onready var _left_tile_map: TileMap = $"Left/LeftTileMap"
-onready var _right_tile_map: TileMap = $"Right/RightTileMap"
+onready var _tile_map: TileMap = $"TileMap"
 
 func _ready() -> void:
+	_mirror_map()
 	_reset()
 
 
@@ -24,6 +24,18 @@ func _reset() -> void:
 	_darkness_tile_map.clear()
 	var dark_tile = _darkness_tile_map.world_to_map(_darkness_spawn.position)
 	_darkness_tile_map.set_cellv(dark_tile, 0)
+
+
+func _mirror_map() -> void:
+	var bounds = _tile_map.get_used_rect()
+	var middle = bounds.size.x / 2
+
+	for x in range(bounds.position.x, bounds.end.x / 2):
+		for y in range(bounds.position.y, bounds.end.y):
+			var target = Vector2(bounds.end.x - x - 2, y)
+			_tile_map.set_cellv(target, _tile_map.get_cell(x, y))
+
+	_tile_map.update_bitmask_region()
 
 
 func _lose() -> void:

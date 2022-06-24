@@ -10,3 +10,4 @@ func _ready() -> void:
 	tile_set = _tile_map.tile_set
 	for cell in _tile_map.get_used_cells():
 		set_cellv(cell, _tile_map.get_cellv(cell))
+	update_bitmask_region()

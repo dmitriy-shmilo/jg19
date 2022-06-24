@@ -29,7 +29,6 @@ func spread_towards(to: Vector2) -> void:
 	var target_cell = world_to_map(to)
 	var source_cell = Vector2.ZERO
 	var min_distance = -1
-	print(get_used_cells().size())
 	for cell in get_used_cells():
 		var dist = target_cell.distance_squared_to(cell)
 		if min_distance < 0 \
@@ -47,6 +46,6 @@ func spread_towards(to: Vector2) -> void:
 	direction = direction.normalized()
 
 	_marker.position = map_to_world(source_cell) + Vector2(8,8)
-	print(source_cell + direction, get_cellv(source_cell + direction))
 	set_cellv(source_cell + direction, 0)
 	update_dirty_quadrants()
+	update_bitmask_region()

@@ -18,6 +18,7 @@ var _can_jump: bool = false
 var _x_multiplier: float = 1.0
 
 onready var _coyote_timer: Timer = $"CoyoteTimer"
+onready var _sprite: AnimatedSprite = $"Sprite"
 
 func _ready() -> void:
 	gravity = 2 * jump_height / (jump_half_time * jump_half_time)
@@ -35,11 +36,15 @@ func _process(delta: float) -> void:
 	_input.x *= _x_multiplier
 
 	if _input.x != 0:
+		_sprite.play("walk")
+		_sprite.flip_h = _input.x < 0
 		_velocity.x = move_toward(_velocity.x, _input.x * speed, acceleration * delta)
 	else:
+		_sprite.play("default")
 		_velocity.x = move_toward(_velocity.x, 0, 2 * acceleration * delta)
 
 	if _can_jump and Input.is_action_just_pressed("up"):
+		_sprite.play("jump")
 		_velocity.y = -jump_speed
 		_can_jump = false
 	else:
