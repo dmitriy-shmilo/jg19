@@ -1,2 +1,0 @@
-﻿59123
-C:/_games/Steam/steamapps/common/Godot Engine/godot.exe
