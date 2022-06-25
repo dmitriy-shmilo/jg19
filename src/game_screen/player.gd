@@ -1,6 +1,9 @@
 class_name Player
 extends KinematicBody2D
 
+const PLAYER_FRAMES = preload("res://assets/textures/player_frames.tres")
+const PLAYER_FRAMES_MIRROR = preload("res://assets/textures/player_frames_alt.tres")
+
 signal died(sender)
 signal joined()
 
@@ -17,14 +20,20 @@ var _velocity: Vector2 = Vector2.ZERO
 var _can_jump: bool = false
 var _x_multiplier: float = 1.0
 
-onready var _coyote_timer: Timer = $"CoyoteTimer"
 onready var _sprite: AnimatedSprite = $"Sprite"
+onready var _coyote_timer: Timer = $"CoyoteTimer"
 
 func _ready() -> void:
+	_sprite.frames = PLAYER_FRAMES if not is_mirror else PLAYER_FRAMES_MIRROR
 	gravity = 2 * jump_height / (jump_half_time * jump_half_time)
 	jump_speed = gravity * jump_half_time
 	_x_multiplier = -1.0 if is_mirror else 1.0
 	scale.x = _x_multiplier
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if not is_mirror and event.is_action_pressed("retry"):
+		emit_signal("died", self)
 
 
 func _process(delta: float) -> void:

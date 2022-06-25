@@ -1,7 +1,10 @@
 class_name Level
 extends Node2D
 
-signal finished(sender)
+const REUNION_SCENE = preload("res://game_screen/reunion.tscn")
+const CORPSE_SCENE = preload("res://game_screen/corpse.tscn")
+
+signal finished(sender, retries)
 signal lost(sender)
 
 export(String) var level_title = ""
@@ -10,18 +13,26 @@ export(bool) var has_darkness = true
 onready var _spreading_timer: Timer = $"SpreadingTimer"
 onready var _darkness_tile_map: TileMap = $"Right/DarknessTileMap"
 onready var _darkness_spawn: Position2D = $"Right/DarknessSpawn"
-onready var _right_player: KinematicBody2D = $"Right/RightPlayer"
-onready var _left_player: KinematicBody2D = $"Left/LeftPlayer"
+onready var _right_player: Player = $"Right/RightPlayer"
+onready var _left_player: Player = $"Left/LeftPlayer"
 onready var _right_player_spawn: Position2D = $"Right/RightPlayerSpawn"
 onready var _left_player_spawn: Position2D = $"Left/LeftPlayerSpawn"
 onready var _tile_map: TileMap = $"TileMap"
 
 var _dark_tile = TileMap.INVALID_CELL
+var _united = false
+var _retries = 0
+var _left_corpse: Corpse
+var _right_corpse: Corpse
 
 func _ready() -> void:
 	_mirror_map()
 	_reset()
-
+	_left_corpse = CORPSE_SCENE.instance()
+	_right_corpse = CORPSE_SCENE.instance()
+	_right_corpse.is_mirror = true
+	add_child(_left_corpse)
+	add_child(_right_corpse)
 
 func _reset() -> void:
 	_right_player_spawn.position = _left_player_spawn.position
@@ -52,23 +63,44 @@ func _mirror_map() -> void:
 
 func _lose() -> void:
 	emit_signal("lost", self)
+	_retries += 1
 	_reset()
 
 
+
 func _on_LeftPlayer_died(sender) -> void:
+	_left_corpse.global_position = sender.global_position
+	_left_corpse.start()
 	_lose()
 
 
 func _on_RightPlayer_died(sender) -> void:
+	_right_corpse.global_position = sender.global_position
+	_right_corpse.start()
 	_lose()
 
 
 func _on_SpreadingTimer_timeout() -> void:
+	if _united:
+		_spreading_timer.stop()
+		return
+
 	_darkness_tile_map.spread_towards(_right_player.position)
 	_darkness_tile_map.spread_randomly()
 
 
 func _on_LeftPlayer_joined() -> void:
-	emit_signal("finished", self)
-	_left_player.collision_layer = 0
-	_reset()
+	if _united:
+		return
+
+	_united = true
+	_left_player.queue_free()
+	_right_player.queue_free()
+	var reunion = REUNION_SCENE.instance()
+	var pos = (_left_player.position + _right_player.position) / 2
+	pos.x += 8
+	reunion.position = pos
+	add_child(reunion)
+	reunion.unite()
+
+	emit_signal("finished", self, _retries)

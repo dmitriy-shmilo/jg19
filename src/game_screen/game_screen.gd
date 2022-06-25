@@ -5,6 +5,7 @@ const LEVELS = [
 	preload("res://game_screen/levels/level1.tscn"),
 	preload("res://game_screen/levels/level2.tscn"),
 	preload("res://game_screen/levels/level3.tscn"),
+	preload("res://game_screen/levels/level4.tscn"),
 ]
 
 onready var _gui = $"Gui"
@@ -40,5 +41,9 @@ func _on_level_lost(level: Level) -> void:
 	_screen_shaker.shake_horizontal(self, "position", 8, 5, 0.25)
 
 
-func _on_level_finished(level: Level) -> void:
+func _on_level_finished(level: Level, retries: int) -> void:
+	_gui.show_level_complete(level.level_title, retries)
+
+
+func _on_Gui_next_level_requested() -> void:
 	_next_level()
