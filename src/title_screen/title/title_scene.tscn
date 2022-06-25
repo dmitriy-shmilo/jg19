@@ -22,7 +22,6 @@ text = "ui_start_game"
 margin_top = 24.0
 margin_right = 128.0
 margin_bottom = 44.0
-disabled = true
 text = "Select Level"
 
 [node name="SettingsButton" type="Button" parent="."]

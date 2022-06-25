@@ -1,0 +1,27 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://assets/textures/noise.tres" type="Texture" id=1]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+uniform sampler2D noise;
+uniform sampler3D noise3;
+
+void fragment() {
+	float a = texture(noise, SCREEN_UV + vec2(TIME / 30.0, TIME / 30.0)).r;
+	float a2 = texture(noise, SCREEN_UV - vec2(TIME / 40.0, TIME / 100.0)).r;
+	float a3 = texture(noise, SCREEN_UV - vec2(sin(TIME / 10.0), cos(TIME / 10.0))).r;
+	
+	a = a + a2 + a3;
+	a /= 3.0;
+	
+	a -= 0.5;
+	a = clamp(a, 0.0, 1.0);
+	a *= 1000.0;
+	COLOR = texture(TEXTURE, UV);
+	COLOR.a = a;
+}"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/noise = ExtResource( 1 )

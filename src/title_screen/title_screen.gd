@@ -5,12 +5,15 @@ onready var _title_scene: Control = $"TitleScene"
 onready var _credits_scene: Control = $"CreditsScene"
 onready var _settings_scene: Control = $"SettingsScene"
 onready var _tutorial_scene: Control = $"TutorialScene"
+onready var _level_select_scene: Control = $"LevelSelectScene"
 onready var _scenes = [
 	_title_scene, _credits_scene,
-	_settings_scene, _tutorial_scene
+	_settings_scene, _tutorial_scene,
+	_level_select_scene
 ]
 
 var _transition_target: Control = null
+
 
 func _on_QuitButton_pressed():
 	get_tree().quit()
@@ -30,6 +33,10 @@ func _on_TutorialButton_pressed():
 
 func _on_SettingsButton_pressed():
 	_transition_to(_settings_scene)
+
+
+func _on_LevelSelectButton_pressed() -> void:
+	_transition_to(_level_select_scene)
 
 
 func _on_NewGameButton_pressed():
@@ -53,3 +60,12 @@ func _transition_to(scene: Control) -> void:
 
 	_transition_target = null
 	_fader.fade_in()
+
+
+
+func _on_LevelSelectScene_level_selected(level) -> void:
+	UserSaveData.last_level = level
+	_fader.fade_out()
+	yield(_fader, "fade_out_completed")
+	var err = get_tree().change_scene("res://game_screen/game_screen.tscn")
+	ErrorHandler.handle(err)

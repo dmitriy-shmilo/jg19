@@ -16,6 +16,7 @@ onready var _sfx_volume_slider = $"VBoxContainer/PanelContainer/TabContainer/Sou
 onready var _music_volume_slider = $"VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container/MusicVolume/VolumeSlider"
 onready var _fullscreen_checkbox: CheckBox = $"VBoxContainer/PanelContainer/TabContainer/OtherSettings/Container/FullscreenCheckbox"
 onready var _particles_checkbox: CheckBox = $"VBoxContainer/PanelContainer/TabContainer/OtherSettings/Container/ParticlesCheckbox"
+onready var _screenshake_checkbox: CheckBox = $"VBoxContainer/PanelContainer/TabContainer/OtherSettings/Container/ScreenshakeCheckbox"
 onready var _language_tab: Control = $"VBoxContainer/PanelContainer/TabContainer/LanguageSettings"
 onready var _language_container: VBoxContainer = $"VBoxContainer/PanelContainer/TabContainer/LanguageSettings/Container"
 
@@ -34,14 +35,14 @@ func _ready() -> void:
 
 
 func _prepare_tabs() -> void:
-	var labels = ["ui_sound_settings", 
+	var labels = ["ui_sound_settings",
 		"ui_language_settings",
 		"ui_key_bindings",
 		"ui_other_settings"]
-	
+
 	for i in labels.size():
 		_tab_container.set_tab_title(i, tr(labels[i]))
-	
+
 	if not show_language_settings:
 		_tab_container.remove_child(_language_tab)
 
@@ -67,6 +68,7 @@ func _prepare_volume() -> void:
 func _prepare_other() -> void:
 	_fullscreen_checkbox.pressed = Settings.fullscreen
 	_particles_checkbox.pressed = Settings.particles
+	_screenshake_checkbox.pressed = Settings.screenshake
 
 
 func _prepare_keybindings() -> void:
@@ -127,12 +129,12 @@ func _on_KeybindingCancelButton_pressed() -> void:
 
 func _on_KeyBindingPopup_action_remapped(action, event) -> void:
 	var events = InputMap.get_action_list(action)
-	
+
 	for i in range(events.size()):
 		if events[i] is InputEventKey:
 			InputMap.action_erase_event(action, events[i])
 			break
-	
+
 	if event != null:
 		InputMap.action_add_event(action, event)
 
@@ -161,3 +163,7 @@ func _on_FullscreenLabel_gui_input(event: InputEvent) -> void:
 func _on_Settings_visibility_changed() -> void:
 	if visible:
 		_back_button.grab_focus()
+
+
+func _on_ScreenshakeCheckbox_toggled(button_pressed: bool) -> void:
+	Settings.screenshake = button_pressed

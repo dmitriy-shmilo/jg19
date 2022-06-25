@@ -6,6 +6,7 @@ signal next_level_requested
 const COMPLETION_TOP_END = 105
 const COMPLETION_TOP_START = -150
 
+onready var _continue_label: Label = $"LevelComplete/VBoxContainer/ContinueLabel"
 onready var _level_complete_tween: Tween = $"LevelComplete/LevelCompleteTween"
 onready var _level_complete: PanelContainer = $"LevelComplete"
 onready var _retries_label: Label = $"LevelComplete/VBoxContainer/RetriesLabel"
@@ -40,15 +41,15 @@ func hide_level_complete() -> void:
 	emit_signal("next_level_requested")
 
 
-func show_level_complete(title: String, retries: int, game_over: bool) -> void:
+func show_level_complete(level: int, retries: int, game_over: bool) -> void:
 	if _level_complete.visible:
 		return
 
 	_level_complete_tween.stop_all()
 	_level_complete.visible = true
-	_retries_label.text = "%d retries" % [retries]
-	_level_label.text = "%s complete" % [title]
-
+	_retries_label.text = tr("ui_retries_count") % [retries]
+	_level_label.text = tr("ui_level_complete") % [level]
+	_continue_label.text = tr("ui_any_key_to_continue") if not game_over else tr("ui_any_key_to_quit")
 	_level_complete_tween.interpolate_property( \
 		_level_complete, "rect_position", \
 		Vector2(_level_complete.rect_position.x, COMPLETION_TOP_START), \

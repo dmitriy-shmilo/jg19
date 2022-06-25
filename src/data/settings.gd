@@ -1,6 +1,6 @@
 extends Node
 
-const CONFIGURABLE_KEYS = ["up", "down", "left", "right", "system_pause"]
+const CONFIGURABLE_KEYS = ["up", "left", "right", "retry", "system_pause"]
 const MAX_VOLUME_DB = 2.0
 const MIN_VOLUME_DB = -40.0
 const MAX_VOLUME = 100.0
@@ -15,6 +15,7 @@ var speech_volume:float = DEFAULT_VOLUME setget set_speech_volume
 
 var fullscreen: bool = false setget set_fullscreen
 var particles: bool = true
+var screenshake: bool = true
 
 var locale: String = "" setget set_locale
 
@@ -71,7 +72,7 @@ func save_settings() -> void:
 
 func load_settings() -> void:
 	var file := File.new()
-	
+
 	if not file.file_exists(SETTINGS_FILE):
 		save_settings()
 
@@ -79,13 +80,13 @@ func load_settings() -> void:
 	ErrorHandler.handle(open_err)
 
 	var data := JSON.parse(file.get_as_text())
-	
+
 	if data.error != OK:
 		# TODO: log or report an error?
 		ErrorHandler.handle(data.error)
 		save_settings()
 		return
-	
+
 	# TODO: validate or keep track of versions?
 	_set_from_data(data.result)
 
@@ -109,10 +110,10 @@ func _get_data() -> Dictionary:
 		if list.size() == 0:
 			action_map[action] = null
 			continue
-		
+
 		if list[0] is InputEventKey:
 			action_map[action] = (list[0] as InputEventKey).scancode
-		
+
 
 	return {
 		"locale" : locale,
@@ -124,7 +125,8 @@ func _get_data() -> Dictionary:
 		},
 		"video": {
 			"particles" : particles,
-			"fullscreen" : fullscreen
+			"fullscreen" : fullscreen,
+			"screenshake" : screenshake
 		},
 		"actions" : action_map
 	}
@@ -139,22 +141,23 @@ func _set_from_data(data: Dictionary) -> void:
 		set_sfx_volume(data["sound"].get("sfx_volume", DEFAULT_VOLUME))
 		set_music_volume(data["sound"].get("music_volume", DEFAULT_VOLUME))
 		set_speech_volume(data["sound"].get("speech_volume", DEFAULT_VOLUME))
-	
+
 	if data.has("video"):
 		set_fullscreen(data["video"].get("fullscreen", true))
-		particles = data["video"].get("particles", true)	
-	
+		particles = data["video"].get("particles", true)
+		screenshake = data["video"].get("screenshake", true)
+
 	if data.has("actions"):
 		for action in CONFIGURABLE_KEYS:
 			if not data["actions"].has(action):
 				continue;
-			
+
 			InputMap.action_erase_events(action)
-			
+
 			var scancode = data["actions"][action]
 			if scancode == null:
 				continue
-			
+
 			var event = InputEventKey.new();
 			event.scancode = scancode
 			InputMap.action_add_event(action, event)

@@ -125,7 +125,7 @@ margin_top = 106.0
 margin_right = 253.0
 margin_bottom = 119.0
 custom_fonts/font = ExtResource( 5 )
-text = "(any key to continue)"
+text = "ui_any_key_to_continue"
 align = 1
 
 [node name="LevelCompleteTween" type="Tween" parent="LevelComplete"]
