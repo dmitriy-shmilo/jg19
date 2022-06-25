@@ -9,6 +9,7 @@ signal lost(sender)
 
 export(String) var level_title = ""
 export(bool) var has_darkness = true
+export(float) var spread_time = 2.0
 
 onready var _spreading_timer: Timer = $"SpreadingTimer"
 onready var _darkness_tile_map: TileMap = $"Right/DarknessTileMap"
@@ -24,8 +25,10 @@ var _united = false
 var _retries = 0
 var _left_corpse: Corpse
 var _right_corpse: Corpse
+var _audio_player: AudioStreamPlayer
 
 func _ready() -> void:
+	_spreading_timer.wait_time = spread_time
 	_mirror_map()
 	_reset()
 	_left_corpse = CORPSE_SCENE.instance()
@@ -33,6 +36,10 @@ func _ready() -> void:
 	_right_corpse.is_mirror = true
 	add_child(_left_corpse)
 	add_child(_right_corpse)
+
+	_audio_player = AudioStreamPlayer.new()
+	add_child(_audio_player)
+
 
 func _reset() -> void:
 	_right_player_spawn.position = _left_player_spawn.position
@@ -67,7 +74,6 @@ func _lose() -> void:
 	_reset()
 
 
-
 func _on_LeftPlayer_died(sender) -> void:
 	_left_corpse.global_position = sender.global_position
 	_left_corpse.start()
@@ -85,7 +91,10 @@ func _on_SpreadingTimer_timeout() -> void:
 		_spreading_timer.stop()
 		return
 
+	_audio_player.stream = preload("res://assets/sound/spread.wav")
+	_audio_player.play()
 	_darkness_tile_map.spread_towards(_right_player.position)
+	_darkness_tile_map.spread_randomly()
 	_darkness_tile_map.spread_randomly()
 
 

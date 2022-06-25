@@ -3,6 +3,8 @@ extends KinematicBody2D
 
 const PLAYER_FRAMES = preload("res://assets/textures/player_frames.tres")
 const PLAYER_FRAMES_MIRROR = preload("res://assets/textures/player_frames_alt.tres")
+const JUMP_SOUND = preload("res://assets/sound/jump.wav")
+const FALL_SOUND = preload("res://assets/sound/fall.wav")
 
 signal died(sender)
 signal joined()
@@ -22,6 +24,7 @@ var _x_multiplier: float = 1.0
 
 onready var _sprite: AnimatedSprite = $"Sprite"
 onready var _coyote_timer: Timer = $"CoyoteTimer"
+onready var _audio_player: AudioStreamPlayer = $"AudioPlayer"
 
 func _ready() -> void:
 	_sprite.frames = PLAYER_FRAMES if not is_mirror else PLAYER_FRAMES_MIRROR
@@ -38,6 +41,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	if is_on_floor():
+		if not _can_jump:
+			_audio_player.stream = FALL_SOUND
+			_audio_player.play()
 		_can_jump = true
 	elif _can_jump and _coyote_timer.is_stopped():
 		_coyote_timer.start()
@@ -57,6 +63,8 @@ func _process(delta: float) -> void:
 		_sprite.play("jump")
 		_velocity.y = -jump_speed
 		_can_jump = false
+		_audio_player.stream = JUMP_SOUND
+		_audio_player.play()
 	else:
 		_velocity.y += gravity * delta
 
@@ -66,8 +74,10 @@ func _process(delta: float) -> void:
 		var collision = get_slide_collision(i)
 		if collision.collider.is_in_group("damage"):
 			emit_signal("died", self)
+			break
 		elif collision.collider.is_in_group("player"):
 			emit_signal("joined")
+			break
 
 
 func reset() -> void:

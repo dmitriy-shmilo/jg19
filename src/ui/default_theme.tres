@@ -295,6 +295,7 @@ margin_bottom = 2.0
 
 [resource]
 default_font = ExtResource( 2 )
+Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
 Button/styles/disabled = SubResource( 19 )
 Button/styles/focus = SubResource( 18 )
 Button/styles/hover = SubResource( 17 )

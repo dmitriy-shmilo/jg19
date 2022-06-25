@@ -171,7 +171,7 @@ _global_script_class_icons={
 [application]
 
 config/name="jg19"
-run/main_scene="res://game_screen/game_screen.tscn"
+run/main_scene="res://splash_screen/splash_screen.tscn"
 config/icon="res://icon.png"
 config/windows_native_icon="res://icon.ico"
 
@@ -190,7 +190,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/vargen/plugin.cfg" )
+enabled=PoolStringArray(  )
 
 [importer_defaults]
 

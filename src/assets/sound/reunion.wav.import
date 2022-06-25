@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/reunion.wav-f7104c079afa2faa2ed5ee531a463e7d.sample"
+
+[deps]
+
+source_file="res://assets/sound/reunion.wav"
+dest_files=[ "res://.import/reunion.wav-f7104c079afa2faa2ed5ee531a463e7d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

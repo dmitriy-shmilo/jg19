@@ -13,33 +13,28 @@ margin_right = -100.0
 margin_bottom = -100.0
 theme = ExtResource( 2 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TitleLabel" type="Label" parent="."]
-margin_right = 824.0
-margin_bottom = 13.0
+margin_right = 440.0
+margin_bottom = 26.0
 text = "ui_credits"
 align = 1
 
 [node name="CreditsText" type="RichTextLabel" parent="."]
-margin_top = 17.0
-margin_right = 824.0
-margin_bottom = 377.0
+margin_top = 30.0
+margin_right = 440.0
+margin_bottom = 116.0
 size_flags_vertical = 3
 bbcode_enabled = true
-bbcode_text = "[center]Thank you for playing[/center]"
-text = "Thank you for playing"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="BackToTitleButton" type="Button" parent="."]
-margin_left = 358.0
-margin_top = 381.0
-margin_right = 466.0
-margin_bottom = 400.0
+margin_left = 117.0
+margin_top = 120.0
+margin_right = 323.0
+margin_bottom = 160.0
 size_flags_horizontal = 4
 shortcut_in_tooltip = false
 shortcut = ExtResource( 3 )

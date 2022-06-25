@@ -40,7 +40,7 @@ func hide_level_complete() -> void:
 	emit_signal("next_level_requested")
 
 
-func show_level_complete(title: String, retries: int) -> void:
+func show_level_complete(title: String, retries: int, game_over: bool) -> void:
 	if _level_complete.visible:
 		return
 

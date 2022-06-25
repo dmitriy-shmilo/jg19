@@ -6,7 +6,7 @@ onready var _credits_scene: Control = $"CreditsScene"
 onready var _settings_scene: Control = $"SettingsScene"
 onready var _tutorial_scene: Control = $"TutorialScene"
 onready var _scenes = [
-	_title_scene, _credits_scene, 
+	_title_scene, _credits_scene,
 	_settings_scene, _tutorial_scene
 ]
 

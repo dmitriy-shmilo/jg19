@@ -13,9 +13,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 3 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TitleScene" parent="." instance=ExtResource( 1 )]
 
@@ -49,10 +46,13 @@ margin_bottom = 348.0
 [node name="CreditsScene" parent="." instance=ExtResource( 6 )]
 visible = false
 
+[node name="CreditsText" parent="CreditsScene" index="1"]
+text = "[center]Thank you for playing[/center]"
+
 [node name="SettingsScene" parent="." instance=ExtResource( 5 )]
 visible = false
 
-[node name="KeyBindings" parent="SettingsScene/VBoxContainer/PanelContainer/TabContainer" index="1"]
+[node name="KeyBindings" parent="SettingsScene/VBoxContainer/PanelContainer/TabContainer" index="2"]
 margin_top = 35.0
 
 [node name="GridContainer" parent="SettingsScene/VBoxContainer/PanelContainer/TabContainer/KeyBindings" index="0"]
