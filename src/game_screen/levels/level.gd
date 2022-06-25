@@ -16,6 +16,8 @@ onready var _right_player_spawn: Position2D = $"Right/RightPlayerSpawn"
 onready var _left_player_spawn: Position2D = $"Left/LeftPlayerSpawn"
 onready var _tile_map: TileMap = $"TileMap"
 
+var _dark_tile = TileMap.INVALID_CELL
+
 func _ready() -> void:
 	_mirror_map()
 	_reset()
@@ -31,8 +33,9 @@ func _reset() -> void:
 	if has_darkness:
 		_spreading_timer.start()
 		_darkness_tile_map.clear()
-		var dark_tile = _darkness_tile_map.world_to_map(_darkness_spawn.position)
-		_darkness_tile_map.set_cellv(dark_tile, 0)
+		_dark_tile = _darkness_tile_map.tile_set.find_tile_by_name("darkness_a")
+		var pos = _darkness_tile_map.world_to_map(_darkness_spawn.position)
+		_darkness_tile_map.set_cellv(pos, _dark_tile)
 
 
 func _mirror_map() -> void:

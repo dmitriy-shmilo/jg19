@@ -3,6 +3,12 @@ extends TileMap
 
 onready var _marker = $Marker
 
+var _tile_id = INVALID_CELL
+
+func _ready() -> void:
+	_tile_id = tile_set.find_tile_by_name("darkness_a")
+
+
 func spread_randomly() -> void:
 	var bounds = get_used_rect()
 	var cells = get_used_cells()
@@ -22,7 +28,7 @@ func spread_randomly() -> void:
 		return
 
 	var dir = directions[randi() % directions.size()]
-	set_cellv(cell + dir, 0)
+	set_cellv(cell + dir, _tile_id)
 
 
 func spread_towards(to: Vector2) -> void:
@@ -46,6 +52,6 @@ func spread_towards(to: Vector2) -> void:
 	direction = direction.normalized()
 
 	_marker.position = map_to_world(source_cell) + Vector2(8,8)
-	set_cellv(source_cell + direction, 0)
+	set_cellv(source_cell + direction, _tile_id)
 	update_dirty_quadrants()
 	update_bitmask_region()
