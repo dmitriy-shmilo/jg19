@@ -38,7 +38,7 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if not is_mirror and event.is_action_pressed("retry"):
 		emit_signal("died", self)
-	
+
 	if event.is_action_released("jump"):
 		_jump_released = true
 
@@ -81,7 +81,8 @@ func _process(delta: float) -> void:
 		var collision = get_slide_collision(i)
 		if collision.collider.is_in_group("player"):
 			emit_signal("joined")
-			break
+		elif collision.collider is MirrorTileMap:
+			collision.collider.collide(collision)
 
 
 func reset() -> void:

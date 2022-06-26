@@ -8,4 +8,5 @@ const LEVELS = [
 	preload("res://game_screen/levels/level2.tscn"),
 	preload("res://game_screen/levels/level3.tscn"),
 	preload("res://game_screen/levels/level4.tscn"),
+	preload("res://game_screen/levels/level5.tscn"),
 ]

@@ -18,7 +18,7 @@ onready var _right_player: Player = $"Right/RightPlayer"
 onready var _left_player: Player = $"Left/LeftPlayer"
 onready var _right_player_spawn: Position2D = $"Right/RightPlayerSpawn"
 onready var _left_player_spawn: Position2D = $"Left/LeftPlayerSpawn"
-onready var _tile_map: TileMap = $"TileMap"
+onready var _tile_map: MirrorTileMap = $"TileMap"
 
 var _dark_tile = TileMap.INVALID_CELL
 var _united = false
@@ -47,6 +47,8 @@ func _reset() -> void:
 	_right_player.position = _right_player_spawn.position
 	_left_player.reset()
 	_right_player.reset()
+
+	_tile_map.reset()
 
 	if has_darkness:
 		_spreading_timer.start()

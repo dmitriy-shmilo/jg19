@@ -11,3 +11,4 @@ txt_hint_reset,[%s] to reset the level,Рестарт: [%s],Рестарт: [%s]
 txt_hint_danger,Beware of sharp things!,Осторожнее с острыми штуками!,Обережно з гострими штуками!
 txt_hint_long_jump,Hold [%s] to go higher.,Удерживайте [%s] чтобы прыгнуть выше.,Утримуйте [%s] щоб стрибнути вище.
 txt_hint_bugs,Bugs bite!,Жуки кусаются!,Жуки кусаються!
+txt_hint_crumble,These rocks don't look very stable.,Это не очень стабильные камни.,Це не дуже стабільне каміння.
