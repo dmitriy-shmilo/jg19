@@ -104,7 +104,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://title_screen/tutorial/tutorial_scene.gd"
 }, {
-"base": "Reference",
+"base": "VargenScriptComposer",
 "class": "VargenCSharpComposer",
 "language": "GDScript",
 "path": "res://addons/vargen/script_composers/vargen_csharp_composer.gd"
@@ -114,12 +114,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/vargen/script_composers/vargen_csharp_constants.gd"
 }, {
-"base": "Reference",
+"base": "VBoxContainer",
 "class": "VargenDock",
 "language": "GDScript",
 "path": "res://addons/vargen/vargen_dock.gd"
 }, {
-"base": "Reference",
+"base": "VargenScriptComposer",
 "class": "VargenGDScriptComposer",
 "language": "GDScript",
 "path": "res://addons/vargen/script_composers/vargen_gdscript_composer.gd"
@@ -129,7 +129,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/vargen/namers/vargen_namer.gd"
 }, {
-"base": "Reference",
+"base": "VargenNamer",
 "class": "VargenPascalNamer",
 "language": "GDScript",
 "path": "res://addons/vargen/namers/vargen_pascal_namer.gd"
@@ -144,7 +144,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/vargen/script_composers/vargen_script_composer.gd"
 }, {
-"base": "Reference",
+"base": "VargenNamer",
 "class": "VargenSnakeNamer",
 "language": "GDScript",
 "path": "res://addons/vargen/namers/vargen_snake_namer.gd"
@@ -202,7 +202,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/vargen/plugin.cfg" )
+enabled=PoolStringArray(  )
 
 [importer_defaults]
 
@@ -235,7 +235,7 @@ system_pause={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
-up={
+jump={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]

@@ -60,17 +60,18 @@ frames = ExtResource( 4 )
 
 [node name="SpreadingTimer" type="Timer" parent="."]
 
-[node name="Hint" parent="." instance=ExtResource( 5 )]
+[node name="HintMovement" parent="." instance=ExtResource( 5 )]
 position = Vector2( 57, 70 )
-text = "[A] and [D] to move"
+text = "txt_hint_movement"
+placeholder_keys = [ "left", "right" ]
 
-[node name="Hint2" parent="." instance=ExtResource( 5 )]
+[node name="HintMirror" parent="." instance=ExtResource( 5 )]
 position = Vector2( 399, 139 )
-text = "The right half mirrors your actions."
+text = "txt_hint_mirror"
 
-[node name="Hint3" parent="." instance=ExtResource( 5 )]
+[node name="HintReunite" parent="." instance=ExtResource( 5 )]
 position = Vector2( 136, 278 )
-text = "Reunite in the middle"
+text = "txt_hint_reunite"
 
 [connection signal="died" from="Left/LeftPlayer" to="." method="_on_LeftPlayer_died"]
 [connection signal="joined" from="Left/LeftPlayer" to="." method="_on_LeftPlayer_joined"]

@@ -1,4 +1,10 @@
 key,en,ru,uk
-_tr,"Other localization",,
-txt_credits,"Thank you for playing","Спасибо за то что играли","Дякуємо за те що грали"
-txt_tutorial,"How to play","Как играть","Як грати"
+_tr,Other localization,,
+txt_credits,Thank you for playing,Спасибо за то что играли,Дякуємо за те що грали
+txt_tutorial,How to play,Как играть,Як грати
+txt_hint_movement,[%s] and [%s] to move,Движение: [%s] и [%s],Рух: [%s] и [%s]
+txt_hint_jump,[%s] to jump,Прыжок: [%s],Стрибок: [%s]
+txt_hint_mirror,Your other half mirrors your actions,Вторая половина отзеркаливает ваши действия,Друга половина віддзеркалює ваші дії
+txt_hint_reunite,Reunite with your other half,Соединитесь со второй половиной,З'єднайтесь з другою половиною
+txt_hint_darkness,Darkness is spreading! Run away!,Тьма распространяется! Бегите!,Темрява поширюється! Тікайте!
+txt_hint_reset,[%s] to reset the level,Рестарт: [%s],Рестарт: [%s]

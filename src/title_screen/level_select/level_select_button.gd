@@ -13,7 +13,7 @@ func _ready() -> void:
 func set_level(val) -> void:
 	level = val
 	if is_inside_tree():
-		_button.text = tr("ui_level_caption") % level
+		_button.text = tr("ui_level_caption") % (level + 1)
 
 
 func _on_Button_pressed() -> void:

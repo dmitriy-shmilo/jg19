@@ -1,6 +1,6 @@
 extends Node
 
-const CONFIGURABLE_KEYS = ["up", "left", "right", "retry", "system_pause"]
+const CONFIGURABLE_KEYS = ["jump", "left", "right", "retry", "system_pause"]
 const MAX_VOLUME_DB = 2.0
 const MIN_VOLUME_DB = -40.0
 const MAX_VOLUME = 100.0

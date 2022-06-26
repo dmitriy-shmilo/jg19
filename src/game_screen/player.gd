@@ -59,7 +59,7 @@ func _process(delta: float) -> void:
 		_sprite.play("default")
 		_velocity.x = move_toward(_velocity.x, 0, 2 * acceleration * delta)
 
-	if _can_jump and Input.is_action_just_pressed("up"):
+	if _can_jump and Input.is_action_just_pressed("jump"):
 		_sprite.play("jump")
 		_velocity.y = -jump_speed
 		_can_jump = false
