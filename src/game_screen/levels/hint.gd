@@ -11,9 +11,10 @@ onready var _tween = $"Tween"
 func _ready() -> void:
 	var keys = []
 	for k in placeholder_keys:
-		keys.append(InputMap.get_action_list(k)[0].as_text())
+		if not Engine.editor_hint:
+			keys.append(InputMap.get_action_list(k)[0].as_text())
 
-	if keys.size() > 0:
+	if not Engine.editor_hint and keys.size() > 0:
 		_label.text = tr(text) % keys
 	else:
 		_label.text = tr(text)

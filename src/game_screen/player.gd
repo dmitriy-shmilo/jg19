@@ -21,6 +21,7 @@ var _input: Vector2 = Vector2.ZERO
 var _velocity: Vector2 = Vector2.ZERO
 var _can_jump: bool = false
 var _x_multiplier: float = 1.0
+var _jump_released: bool = false
 
 onready var _sprite: AnimatedSprite = $"Sprite"
 onready var _coyote_timer: Timer = $"CoyoteTimer"
@@ -37,6 +38,9 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if not is_mirror and event.is_action_pressed("retry"):
 		emit_signal("died", self)
+	
+	if event.is_action_released("jump"):
+		_jump_released = true
 
 
 func _process(delta: float) -> void:
@@ -63,10 +67,13 @@ func _process(delta: float) -> void:
 		_sprite.play("jump")
 		_velocity.y = -jump_speed
 		_can_jump = false
+		_jump_released = false
 		_audio_player.stream = JUMP_SOUND
 		_audio_player.play()
 	else:
 		_velocity.y += gravity * delta
+		if _jump_released:
+			_velocity.y += gravity * delta
 
 	_velocity = move_and_slide(_velocity, Vector2.UP)
 
