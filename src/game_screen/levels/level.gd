@@ -47,8 +47,10 @@ func _reset() -> void:
 	_right_player.position = _right_player_spawn.position
 	_left_player.reset()
 	_right_player.reset()
-
 	_tile_map.reset()
+
+	for r in get_tree().get_nodes_in_group("resetable"):
+		r.reset()
 
 	if has_darkness:
 		_spreading_timer.start()

@@ -31,7 +31,7 @@ script = ExtResource( 4 )
 position = Vector2( 12, 304 )
 
 [node name="Spikes" parent="Left" instance=ExtResource( 9 )]
-position = Vector2( 75, 344 )
+position = Vector2( 91, 344 )
 
 [node name="HalfSaw" parent="Left" instance=ExtResource( 11 )]
 position = Vector2( 264, 232 )
@@ -84,7 +84,7 @@ is_mirror = true
 [node name="SpreadingTimer" type="Timer" parent="."]
 
 [node name="HintDanger" parent="." instance=ExtResource( 1 )]
-position = Vector2( 55, 345 )
+position = Vector2( 71, 345 )
 text = "txt_hint_danger"
 
 [connection signal="died" from="Left/LeftPlayer" to="." method="_on_LeftPlayer_died"]
