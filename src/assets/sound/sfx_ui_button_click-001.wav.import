@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sfx_ui_button_click-001.wav-24c9468eef0844a39309261cc9967675.sample"
+
+[deps]
+
+source_file="res://assets/sound/sfx_ui_button_click-001.wav"
+dest_files=[ "res://.import/sfx_ui_button_click-001.wav-24c9468eef0844a39309261cc9967675.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

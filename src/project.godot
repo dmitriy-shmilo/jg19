@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Button",
+"class": "ButtonBase",
+"language": "GDScript",
+"path": "res://ui/button_base.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Corpse",
 "language": "GDScript",
@@ -160,6 +165,7 @@ _global_script_classes=[ {
 "path": "res://addons/vargen/namers/vargen_snake_namer.gd"
 } ]
 _global_script_class_icons={
+"ButtonBase": "",
 "Corpse": "",
 "CreditsScene": "",
 "Crumbles": "",
@@ -204,6 +210,7 @@ config/windows_native_icon="res://icon.ico"
 ErrorHandler="*res://util/error_handler.gd"
 Settings="*res://data/settings.gd"
 UserSaveData="*res://data/user_save_data.gd"
+GuiAudio="*res://ui/gui_audio.gd"
 
 [display]
 

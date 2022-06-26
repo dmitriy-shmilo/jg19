@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/death.wav-e4532eb5a0cd78975c93665c052b8e5a.sample"
+path="res://.import/sfx_jump-004.wav-cb850a54e13bba4e31b44506a2e0197f.sample"
 
 [deps]
 
-source_file="res://assets/sound/death.wav"
-dest_files=[ "res://.import/death.wav-e4532eb5a0cd78975c93665c052b8e5a.sample" ]
+source_file="res://assets/sound/sfx_jump-004.wav"
+dest_files=[ "res://.import/sfx_jump-004.wav-cb850a54e13bba4e31b44506a2e0197f.sample" ]
 
 [params]
 

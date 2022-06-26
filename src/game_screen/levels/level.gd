@@ -9,7 +9,7 @@ signal lost(sender)
 
 export(String) var level_title = ""
 export(bool) var has_darkness = true
-export(float) var spread_time = 2.0
+export(float) var spread_time = 1.25
 
 onready var _spreading_timer: Timer = $"SpreadingTimer"
 onready var _darkness_tile_map: TileMap = $"Right/DarknessTileMap"
@@ -96,7 +96,6 @@ func _on_SpreadingTimer_timeout() -> void:
 	_audio_player.stream = preload("res://assets/sound/spread.wav")
 	_audio_player.play()
 	_darkness_tile_map.spread_towards(_right_player.position)
-	_darkness_tile_map.spread_randomly()
 	_darkness_tile_map.spread_randomly()
 
 

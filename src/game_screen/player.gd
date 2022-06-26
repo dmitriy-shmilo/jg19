@@ -3,8 +3,13 @@ extends KinematicBody2D
 
 const PLAYER_FRAMES = preload("res://assets/textures/player_frames.tres")
 const PLAYER_FRAMES_MIRROR = preload("res://assets/textures/player_frames_alt.tres")
-const JUMP_SOUND = preload("res://assets/sound/jump.wav")
-const FALL_SOUND = preload("res://assets/sound/fall.wav")
+const JUMP_SOUNDS = [
+	preload("res://assets/sound/sfx_jump-001.wav"),
+	preload("res://assets/sound/sfx_jump-002.wav"),
+	preload("res://assets/sound/sfx_jump-003.wav"),
+	preload("res://assets/sound/sfx_jump-004.wav")
+]
+const FALL_SOUND = preload("res://assets/sound/sfx_char_land.wav")
 
 signal died(sender)
 signal joined()
@@ -68,8 +73,9 @@ func _process(delta: float) -> void:
 		_velocity.y = -jump_speed
 		_can_jump = false
 		_jump_released = false
-		_audio_player.stream = JUMP_SOUND
-		_audio_player.play()
+		if not is_mirror:
+			_audio_player.stream = JUMP_SOUNDS[randi() % JUMP_SOUNDS.size()]
+			_audio_player.play()
 	else:
 		_velocity.y += gravity * delta
 		if _jump_released:

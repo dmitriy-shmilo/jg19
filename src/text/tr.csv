@@ -1,6 +1,39 @@
 key,en,ru,uk
 _tr,Other localization,,
-txt_credits,Thank you for playing,Спасибо за то что играли,Дякуємо за те що грали
+txt_credits,"[font=res://ui/font_h2.tres]Font[/font]
+- [url=https://datagoblin.itch.io/monogram]monogram[/url] by datagoblin
+
+[font=res://ui/font_h2.tres]SFX and Music[/font]
+ - [url=https://gustavosperling.itch.io/]Gustavo Sperling[/url]
+
+[font=res://ui/font_h2.tres]Art[/font]
+- [url=https://merly23.itch.io/]Merly23[/url]
+
+[font=res://ui/font_h2.tres]Code[/font]
+- [url=https://dmitriy-shmilo.itch.io/]Dmitriy Shmilo[/url]
+- Game sources are avaiable on [url=https://github.com/dmitriy-shmilo/jg19]github[/url]\n","[font=res://ui/font_h2.tres]Шрифт[/font]
+- [url=https://datagoblin.itch.io/monogram]monogram[/url], datagoblin
+
+[font=res://ui/font_h2.tres]Звук[/font]
+ - [url=https://gustavosperling.itch.io/]Gustavo Sperling[/url]
+
+[font=res://ui/font_h2.tres]Арт[/font]
+- [url=https://merly23.itch.io/]Merly23[/url]
+
+[font=res://ui/font_h2.tres]Код[/font]
+- [url=https://dmitriy-shmilo.itch.io/]Dmitriy Shmilo[/url]
+- Код доступен на [url=https://github.com/dmitriy-shmilo/jg19]гитхабе[/url]\n","[font=res://ui/font_h2.tres]Шрифт[/font]
+- [url=https://datagoblin.itch.io/monogram]monogram[/url], datagoblin
+
+[font=res://ui/font_h2.tres]Звук[/font]
+ - [url=https://gustavosperling.itch.io/]Gustavo Sperling[/url]
+
+[font=res://ui/font_h2.tres]Арт[/font]
+- [url=https://merly23.itch.io/]Merly23[/url]
+
+[font=res://ui/font_h2.tres]Код[/font]
+- [url=https://dmitriy-shmilo.itch.io/]Dmitriy Shmilo[/url]
+- Код доступний на [url=https://github.com/dmitriy-shmilo/jg19]гітхабі[/url]\n"
 txt_tutorial,How to play,Как играть,Як грати
 txt_hint_movement,[%s] and [%s] to move,Движение: [%s] и [%s],Рух: [%s] и [%s]
 txt_hint_jump,[%s] to jump,Прыжок: [%s],Стрибок: [%s]

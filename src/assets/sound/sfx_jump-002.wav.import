@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/reunion.wav-f7104c079afa2faa2ed5ee531a463e7d.sample"
+path="res://.import/sfx_jump-002.wav-f1719162a12c6765480bf99878a6290b.sample"
 
 [deps]
 
-source_file="res://assets/sound/reunion.wav"
-dest_files=[ "res://.import/reunion.wav-f7104c079afa2faa2ed5ee531a463e7d.sample" ]
+source_file="res://assets/sound/sfx_jump-002.wav"
+dest_files=[ "res://.import/sfx_jump-002.wav-f1719162a12c6765480bf99878a6290b.sample" ]
 
 [params]
 

@@ -1,7 +1,7 @@
 extends Node2D
 
-const DEATH_SOUND = preload("res://assets/sound/death.wav")
-const REUNION_SOUND = preload("res://assets/sound/reunion.wav")
+const DEATH_SOUND = preload("res://assets/sound/sfx_char_death.wav")
+const REUNION_SOUND = preload("res://assets/sound/sfx_char_reunite.wav")
 
 
 onready var _gui = $"Gui"

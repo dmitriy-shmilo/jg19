@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://title_screen/settings/settings_scene.gd" type="Script" id=1]
 [ext_resource path="res://ui/cancel_shortcut.tres" type="ShortCut" id=2]
 [ext_resource path="res://ui/default_theme.tres" type="Theme" id=3]
 [ext_resource path="res://title_screen/settings/key_binding_popup.gd" type="Script" id=4]
+[ext_resource path="res://ui/button_base.gd" type="Script" id=5]
 
 [node name="Settings" type="Control"]
 anchor_left = 0.00125241
@@ -182,9 +183,9 @@ margin_bottom = -7.0
 
 [node name="Container" type="VBoxContainer" parent="VBoxContainer/PanelContainer/TabContainer/OtherSettings"]
 margin_left = 163.0
-margin_top = 29.0
+margin_top = 52.0
 margin_right = 351.0
-margin_bottom = 147.0
+margin_bottom = 124.0
 size_flags_horizontal = 6
 size_flags_vertical = 6
 custom_constants/separation = 20
@@ -220,6 +221,7 @@ size_flags_horizontal = 4
 shortcut_in_tooltip = false
 shortcut = ExtResource( 2 )
 text = "ui_back_to_title"
+script = ExtResource( 5 )
 
 [node name="KeyBindingPopup" type="PopupPanel" parent="."]
 anchor_left = 0.5
@@ -278,6 +280,7 @@ margin_right = 80.0
 margin_bottom = 25.0
 focus_mode = 0
 text = "Cancel"
+script = ExtResource( 5 )
 
 [node name="ClearButton" type="Button" parent="KeyBindingPopup/VBoxContainer/HBoxContainer"]
 margin_left = 84.0
@@ -285,6 +288,7 @@ margin_right = 206.0
 margin_bottom = 25.0
 focus_mode = 0
 text = "Clear Binding"
+script = ExtResource( 5 )
 
 [connection signal="visibility_changed" from="." to="." method="_on_Settings_visibility_changed"]
 [connection signal="value_changed" from="VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container/MasterVolume/VolumeSlider" to="." method="_on_MasterVolumeSlider_value_changed"]

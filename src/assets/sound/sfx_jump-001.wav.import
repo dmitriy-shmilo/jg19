@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/fall.wav-a37a906d078f68223fdbaa7769a87aa1.sample"
+path="res://.import/sfx_jump-001.wav-fcafa4371cec5db01c0a9025440f3ba0.sample"
 
 [deps]
 
-source_file="res://assets/sound/fall.wav"
-dest_files=[ "res://.import/fall.wav-a37a906d078f68223fdbaa7769a87aa1.sample" ]
+source_file="res://assets/sound/sfx_jump-001.wav"
+dest_files=[ "res://.import/sfx_jump-001.wav-fcafa4371cec5db01c0a9025440f3ba0.sample" ]
 
 [params]
 
