@@ -79,10 +79,7 @@ func _process(delta: float) -> void:
 
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
-		if collision.collider.is_in_group("damage"):
-			emit_signal("died", self)
-			break
-		elif collision.collider.is_in_group("player"):
+		if collision.collider.is_in_group("player"):
 			emit_signal("joined")
 			break
 
@@ -95,3 +92,8 @@ func reset() -> void:
 
 func _on_CoyoteTimer_timeout() -> void:
 	_can_jump = false
+
+
+func _on_Hitbox_body_entered(body):
+	if body.is_in_group("damage"):
+		emit_signal("died", self)
