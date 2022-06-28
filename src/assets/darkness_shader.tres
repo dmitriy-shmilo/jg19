@@ -5,7 +5,6 @@
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 uniform sampler2D noise;
-uniform sampler3D noise3;
 
 void fragment() {
 	float a = texture(noise, SCREEN_UV + vec2(TIME / 30.0, TIME / 30.0)).r;
