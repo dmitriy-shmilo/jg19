@@ -5,7 +5,7 @@ signal level_selected(level)
 
 const BUTTON_SCENE = preload("res://title_screen/level_select/level_select_button.tscn")
 
-onready var _grid_container: GridContainer = $"VBoxContainer/GridContainer"
+onready var _grid_container: GridContainer = $"PanelContainer/VBoxContainer/ScrollContainer/GridContainer"
 
 func _ready() -> void:
 	for i in range(UserSaveData.last_unlocked_level + 1):

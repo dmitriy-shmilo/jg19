@@ -1,7 +1,7 @@
 extends Control
 class_name TitleScene
 
-onready var _new_game_button: Button = $"NewGameButton"
+onready var _new_game_button: Button = $"HBoxContainer/NewGameButton"
 onready var _quit_button = $"QuitButton"
 
 func _ready():

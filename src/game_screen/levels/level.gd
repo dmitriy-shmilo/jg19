@@ -95,7 +95,7 @@ func _on_SpreadingTimer_timeout() -> void:
 		_spreading_timer.stop()
 		return
 
-	_audio_player.stream = preload("res://assets/sound/spread.wav")
+	_audio_player.stream = preload("res://assets/sound/sfx_dark_spread1.wav")
 	_audio_player.play()
 	_darkness_tile_map.spread_towards(_right_player.position)
 	_darkness_tile_map.spread_randomly()
